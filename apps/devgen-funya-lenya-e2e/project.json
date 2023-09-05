@@ -1,0 +1,29 @@
+{
+  "name": "devgen-funya-lenya-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/devgen-funya-lenya-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/devgen-funya-lenya-e2e/cypress.json",
+        "devServerTarget": "devgen-funya-lenya:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "devgen-funya-lenya:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/devgen-funya-lenya-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["devgen-funya-lenya"]
+}
